@@ -1,0 +1,73 @@
+---
+title: "Indice Pobreza Municipal"
+author: "Gonzalo"
+date: "7/9/2021"
+output: html_document
+---
+
+# Script análisis bases de datos Indice de Pobreza Municipal
+
+## Crear y establacer directorios de trabajo
+
+```{r}
+setwd("~/")
+
+if (!dir.exists("analisis_ip")) {
+  dir.create("analisis_ip")
+}
+setwd("~/analisis_ip")
+
+```
+
+### URL que contiene la descarga del archivo comprimido con las bases de datos:
+
+```{r}
+setwd("~/")
+
+url_ip <- "https://www.coneval.org.mx/Informes/Pobreza/Datos_abiertos/pobreza_municipal/indicadores%20de%20pobreza%20municipal,%202015.csv"
+```
+
+### Variable con el nombre del archivo que interesa
+
+```{r}
+setwd("~/")
+
+ip_file <- "indicadores de pobreza municipal, 2015 .csv"
+
+```
+
+### Verificación y descarga de bases de datos 
+
+```{r}
+setwd("~/")
+
+if (!file.exists(ip_file)) {
+  download.file(url_ip, ip_file, mode = "wb")
+}
+
+```
+
+### Cargar CSVs de bases de datos en sesion de R.
+
+```{r}
+setwd("~/")
+
+library(readr)
+IndicePobrezaMunicipal <- read_csv("indicadores de pobreza municipal, 2015 .csv")
+
+```
+
+### Explorar base de datos
+
+```{r}
+head(IndicePobrezaMunicipal)
+tail(IndicePobrezaMunicipal)
+str(IndicePobrezaMunicipal)
+summary(IndicePobrezaMunicipal)
+
+IndicePobrezaMunicipal[!complete.cases(IndicePobrezaMunicipal),]
+```
+
+
+
+
