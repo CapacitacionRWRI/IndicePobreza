@@ -69,5 +69,56 @@ IndicePobrezaMunicipal[!complete.cases(IndicePobrezaMunicipal),]
 ```
 
 
+```{r}
+setwd("~/")
+
+if (!dir.exists("analisis_RWI")) {
+  dir.create("analisis_RWI")
+}
+setwd("~/analisis_RWI")
+
+```
+
+### URL que contiene la descarga del archivo comprimido con las bases de datos:
+
+```{r}
+setwd("~/")
+
+url_RWI <- "https://data.humdata.org/dataset/76f2a2ea-ba50-40f5-b79c-db95d668b843/resource/a23aa2b8-8fd6-48f6-9a47-2c9d92619200/download/mex_relative_wealth_index.csv"
+```
+
+### Variable con el nombre del archivo que interesa
+
+```{r}
+setwd("~/")
+
+RWI_file <- "mex_relative_wealth_index.csv"
+
+```
+
+### Verificación y descarga de bases de datos 
+
+```{r}
+setwd("~/")
+
+if (!file.exists(RWI_file)) {
+  download.file(url_RWI, RWI_file, mode = "wb")
+}
+
+```
+
+```{r}
+
+RWI_Mexico <- read_csv("https://data.humdata.org/dataset/76f2a2ea-ba50-40f5-b79c-db95d668b843/resource/a23aa2b8-8fd6-48f6-9a47-2c9d92619200/download/mex_relative_wealth_index.csv")
+
+```
+
+```{r}
+head(RWI_Mexico)
+tail(RWI_Mexico)
+str(RWI_Mexico)
+summary(RWI_Mexico)
+
+```
 
 
