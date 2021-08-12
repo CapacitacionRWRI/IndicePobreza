@@ -9,8 +9,13 @@ output: html_document
 
 ## Crear y establacer directorios de trabajo
 
+```{r Setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/")
+```
+
+
 ```{r}
-setwd("~/")
 
 if (!dir.exists("analisis_ip")) {
   dir.create("analisis_ip")
@@ -22,7 +27,6 @@ setwd("~/analisis_ip")
 ### URL que contiene la descarga del archivo comprimido con las bases de datos:
 
 ```{r}
-setwd("~/")
 
 url_ip <- "https://www.coneval.org.mx/Informes/Pobreza/Datos_abiertos/pobreza_municipal/indicadores%20de%20pobreza%20municipal,%202015.csv"
 ```
@@ -30,7 +34,6 @@ url_ip <- "https://www.coneval.org.mx/Informes/Pobreza/Datos_abiertos/pobreza_mu
 ### Variable con el nombre del archivo que interesa
 
 ```{r}
-setwd("~/")
 
 ip_file <- "indicadores de pobreza municipal, 2015 .csv"
 
@@ -39,7 +42,6 @@ ip_file <- "indicadores de pobreza municipal, 2015 .csv"
 ### Verificación y descarga de bases de datos 
 
 ```{r}
-setwd("~/")
 
 if (!file.exists(ip_file)) {
   download.file(url_ip, ip_file, mode = "wb")
@@ -50,7 +52,6 @@ if (!file.exists(ip_file)) {
 ### Cargar CSVs de bases de datos en sesion de R.
 
 ```{r}
-setwd("~/")
 
 library(readr)
 IndicePobrezaMunicipal <- read_csv("indicadores de pobreza municipal, 2015 .csv")
@@ -70,7 +71,6 @@ IndicePobrezaMunicipal[!complete.cases(IndicePobrezaMunicipal),]
 
 
 ```{r}
-setwd("~/")
 
 if (!dir.exists("analisis_RWI")) {
   dir.create("analisis_RWI")
@@ -82,7 +82,6 @@ setwd("~/analisis_RWI")
 ### URL que contiene la descarga del archivo comprimido con las bases de datos:
 
 ```{r}
-setwd("~/")
 
 url_RWI <- "https://data.humdata.org/dataset/76f2a2ea-ba50-40f5-b79c-db95d668b843/resource/a23aa2b8-8fd6-48f6-9a47-2c9d92619200/download/mex_relative_wealth_index.csv"
 ```
@@ -90,7 +89,6 @@ url_RWI <- "https://data.humdata.org/dataset/76f2a2ea-ba50-40f5-b79c-db95d668b84
 ### Variable con el nombre del archivo que interesa
 
 ```{r}
-setwd("~/")
 
 RWI_file <- "mex_relative_wealth_index.csv"
 
@@ -99,7 +97,6 @@ RWI_file <- "mex_relative_wealth_index.csv"
 ### Verificación y descarga de bases de datos 
 
 ```{r}
-setwd("~/")
 
 if (!file.exists(RWI_file)) {
   download.file(url_RWI, RWI_file, mode = "wb")
