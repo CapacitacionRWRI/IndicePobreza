@@ -9,8 +9,13 @@ output: html_document
 
 ## Crear y establacer directorios de trabajo
 
+```{r Setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "~/")
+```
+
+
 ```{r}
-setwd("~/")
 
 if (!dir.exists("analisis_ipAGEB")) {
   dir.create("analisis_ipAGEB")
@@ -22,15 +27,12 @@ setwd("~/analisis_ipAGEB")
 ### URL que contiene la descarga del archivo comprimido con las bases de datos:
 
 ```{r}
-setwd("~/")
-
 url_ipAGEB <- "https://www.coneval.org.mx/Informes/Pobreza/Datos_abiertos/Pobreza_urbana/Rangos%20de%20pobreza%20y%20pobreza%20extrema%20a%20nivel%20AGEB%2C%202015.csv"
 ```
 
 ### Variable con el nombre del archivo que interesa
 
 ```{r}
-setwd("~/")
 
 ipAGEB_file <- "Rangos de pobreza y pobreza extrema a nivel AGEB, 2015.csv"
 
@@ -39,7 +41,6 @@ ipAGEB_file <- "Rangos de pobreza y pobreza extrema a nivel AGEB, 2015.csv"
 ### Verificación y descarga de bases de datos 
 
 ```{r}
-setwd("~/")
 
 if (!file.exists(ipAGEB_file)) {
   download.file(url_ipAGEB, ipAGEB_file, mode = "wb")
@@ -50,7 +51,6 @@ if (!file.exists(ipAGEB_file)) {
 ### Cargar CSVs de bases de datos en sesion de R.
 
 ```{r}
-setwd("~/")
 
 library(readr)
 IndicePobrezaMunicipalAGEB <- read_csv("Rangos de pobreza y pobreza extrema a nivel AGEB, 2015.csv")
